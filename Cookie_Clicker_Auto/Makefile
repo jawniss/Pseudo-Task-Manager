@@ -1,20 +1,19 @@
-# OBJS	= Find_Windows.o main_Cookie_Clicker.o
-# SOURCE	= Find_Windows.cpp main_Cookie_Clicker.cpp
-# HEADER	= Find_Windows.h
-# OUT	= test
-# CC	 = g++
-# FLAGS	 = -g -c -Wall
-# LFLAGS	 = 
+CFLAGS = -Wall -std=c++11
 
-# all: $(OBJS)
-# 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
+all: main
+main_Cookie_Clicker: main_Cookie_Clicker.o 
+Find_Windows: Find_Windows.o 
 
-# Find_Windows.o: Find_Windows.cpp
-# 	$(CC) $(FLAGS) Find_Windows.cpp -std=c++11
+# Linker:
+main: main_Cookie_Clicker.o Find_Windows.o
+	g++ main_Cookie_Clicker.o Find_Windows.o $(CFLAGS) -o test
 
-# main_Cookie_Clicker.o: main_Cookie_Clicker.cpp
-# 	$(CC) $(FLAGS) main_Cookie_Clicker.cpp -std=c++11
+# Compilation commands:
+main_Cookie_Clicker.o: main_Cookie_Clicker.cpp
+	g++ -c main_Cookie_Clicker.cpp $(CFLAGS) -o main_Cookie_Clicker.o
 
+Find_Windows.o: Find_Windows.cpp Find_Windows.h
+	g++ -c Find_Windows.cpp $(CFLAGS) -o Find_Windows.o
 
-# clean:
-# 	rm -f $(OBJS) $(OUT)
+clean:
+	-del Find_Windows main_Cookie_Clicker *.o *.exe

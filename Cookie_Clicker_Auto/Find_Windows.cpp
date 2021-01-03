@@ -1,6 +1,6 @@
 #include "Find_Windows.h"
 
-static BOOL CALLBACK enumWindowCallback(HWND hWnd, LPARAM lparam) {
+BOOL CALLBACK enumWindowCallback(HWND hWnd, LPARAM lparam) {
     int length = GetWindowTextLength(hWnd);
     char* buffer = new char[length + 1];
     GetWindowText(hWnd, buffer, length + 1);

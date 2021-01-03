@@ -5,6 +5,6 @@
 #include <iostream>
 #include <Windows.h>
 
-static BOOL CALLBACK enumWindowCallback(HWND hWnd, LPARAM lparam);
+BOOL CALLBACK enumWindowCallback(HWND hWnd, LPARAM lparam);
 
 #endif

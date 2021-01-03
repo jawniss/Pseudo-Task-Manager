@@ -7,6 +7,7 @@ int main()
 {
     std::cout << "Enmumerating windows..." << std::endl;
     EnumWindows(enumWindowCallback, NULL);
-    std::cin.ignore();
+    // std::cin.ignore();
+
     return 0;
 }
