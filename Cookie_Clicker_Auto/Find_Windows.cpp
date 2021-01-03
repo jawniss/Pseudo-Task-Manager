@@ -9,13 +9,10 @@ BOOL CALLBACK enumWindowCallback(HWND hWnd, LPARAM lparam) {
     // List visible windows with a non-empty title
     if (IsWindowVisible(hWnd) && length != 0) {
         std::cout << hWnd << ":  " << windowTitle << std::endl;
+        if( windowTitle == "Steam" )
+        {
+            std::cout << "Steam found" << std::endl;
+        }
     }
     return TRUE;
 }
-
-// int main() {
-//     std::cout << "Enmumerating windows..." << std::endl;
-//     EnumWindows(enumWindowCallback, NULL);
-//     std::cin.ignore();
-//     return 0;
-// }
