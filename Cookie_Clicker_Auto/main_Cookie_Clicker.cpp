@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Find_Windows.h"
 #include "globals.h"
+#include "Focus_Window.h"
 
 using namespace std;
 

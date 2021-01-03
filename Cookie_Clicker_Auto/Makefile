@@ -5,8 +5,8 @@ main_Cookie_Clicker: main_Cookie_Clicker.o
 Find_Windows: Find_Windows.o 
 
 # Linker:
-main: main_Cookie_Clicker.o Find_Windows.o globals.o
-	g++ main_Cookie_Clicker.o Find_Windows.o globals.o $(CFLAGS) -o test
+main: main_Cookie_Clicker.o Find_Windows.o globals.o Focus_Window.o
+	g++ main_Cookie_Clicker.o Find_Windows.o globals.o Focus_Window.o $(CFLAGS) -o test
 
 # Compilation commands:
 main_Cookie_Clicker.o: main_Cookie_Clicker.cpp
@@ -17,6 +17,9 @@ Find_Windows.o: Find_Windows.cpp Find_Windows.h
 
 globals.o: globals.cpp globals.h
 	g++ -c globals.cpp $(CFLAGS) -o globals.o
+
+Focus_Window.o: Focus_Window.cpp Focus_Window.h
+	g++ -c Focus_Window.cpp $(CFLAGS) -o Focus_Window.o
 
 clean:
 	-del Find_Windows main_Cookie_Clicker *.o *.exe
