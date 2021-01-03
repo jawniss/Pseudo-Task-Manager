@@ -1,12 +1,10 @@
 CFLAGS = -Wall -std=c++11
 
-all: main 
-main: main
-other: other
-
+# Linker:
 main: main.o other.o
 	g++ main.o other.o $(CFLAGS) -o test66
 
+# Compilation commands:
 main.o: main.cpp
 	g++ -c main.cpp $(CFLAGS) -o main.o
 
