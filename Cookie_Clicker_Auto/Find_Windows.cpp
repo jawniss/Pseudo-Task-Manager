@@ -21,9 +21,10 @@ BOOL CALLBACK enumWindowCallback( HWND hWnd, LPARAM lparam )
     if ( IsWindowVisible(hWnd) && length != 0 ) 
     {
         std::cout << hWnd << ":  " << windowTitle << std::endl;
-        if( windowTitle == "Steam" )
+        // if( windowTitle == "Steam" )
+        if( windowTitle.find( "Cookie Clicker" ) != string::npos )
         {
-            // std::cout << "Steam found" << std::endl;
+            std::cout << "Cookie clicker found: " << windowTitle << std::endl;
             setGlobalWindowName( windowTitle );
             return FALSE;
         }
