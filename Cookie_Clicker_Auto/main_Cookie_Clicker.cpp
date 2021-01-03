@@ -11,6 +11,7 @@ int main()
     EnumWindows(enumWindowCallback, NULL);
     // std::cin.ignore();
     cout << "Globe: " << windowName << endl;
+    focusWindow();
 
     return 0;
 }

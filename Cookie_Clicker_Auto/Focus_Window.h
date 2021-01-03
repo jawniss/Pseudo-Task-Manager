@@ -7,6 +7,6 @@
 
 using namespace std;
 
-void focusWindow( string windowName );
+void focusWindow();
 
 #endif
