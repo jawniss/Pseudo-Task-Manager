@@ -1,6 +1,6 @@
 CFLAGS = -Wall -std=c++11
 
-all: main other 
+all: main 
 main: main
 other: other
 
