@@ -6,5 +6,6 @@
 #include <Windows.h>
 
 BOOL CALLBACK enumWindowCallback(HWND hWnd, LPARAM lparam);
+void setGlobalWindowName( std::string name );
 
 #endif

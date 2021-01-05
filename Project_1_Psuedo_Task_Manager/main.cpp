@@ -1,19 +1,23 @@
 #include <iostream>
-#include "Find_Windows.h"
-#include "globals.h"
-#include "Focus_Window.h"
+#include "User_Interface.h"
 
 using namespace std;
 
+/**
+ * Wanted functions:
+ *   - list all open window applications
+ *   - focus on a specific window
+ *   - minimize a certain window
+ *   - fullscreen a certain window
+ *   - kill certain window
+ * 
+ * Long term wanted functions:
+ *   - find a downloaded program and open it
+ */
+
 int main()
 {
-    cout << "Enter name of window to find: " ;
-    cin >> windowToFind;
-    std::cout << "Enmumerating windows..." << std::endl;
-    EnumWindows(enumWindowCallback, NULL);
-    // std::cin.ignore();
-    cout << "Globe: " << windowName << endl;
-    focusWindow();
+    getInput();
 
     return 0;
 }

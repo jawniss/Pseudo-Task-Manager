@@ -7,4 +7,3 @@ using namespace std;
 // You must include global.h so that the compiler matches it to the correct
 // one, and doesn't implicitly convert it to static.
 string windowName = "";
-string windowToFind = "";

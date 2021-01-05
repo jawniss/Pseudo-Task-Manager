@@ -3,10 +3,12 @@ CFLAGS = -Wall -std=c++11
 all: main
 Focus_Window: Focus_Window.o 
 Find_Windows: Find_Windows.o 
+globals: globals.o
+User_Interface: User_Interface.o
 
 # Linker:
-main: main.o Find_Windows.o globals.o Focus_Window.o
-	g++ main.o Find_Windows.o globals.o Focus_Window.o $(CFLAGS) -o test
+main: main.o Find_Windows.o globals.o Focus_Window.o User_Interface.o
+	g++ main.o Find_Windows.o globals.o Focus_Window.o User_Interface.o $(CFLAGS) -o test
 
 # Compilation commands:
 main.o: main.cpp
@@ -20,6 +22,9 @@ globals.o: globals.cpp globals.h
 
 Focus_Window.o: Focus_Window.cpp Focus_Window.h
 	g++ -c Focus_Window.cpp $(CFLAGS) -o Focus_Window.o
+
+User_Interface.o: User_Interface.cpp User_Interface.h
+	g++ -c User_Interface.cpp $(CFLAGS) -o User_Interface.o
 
 clean:
 	-del Find_Windows main *.o *.exe
