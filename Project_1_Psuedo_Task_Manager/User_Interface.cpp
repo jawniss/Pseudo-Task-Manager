@@ -9,6 +9,20 @@
 
 using namespace std;
 
+
+void selectWindow()
+{
+    try
+    {
+        EnumWindows( findSpecificWindow, NULL );
+    } catch( ... ) {
+        cout << "Window was not found - sorry!" << endl;
+        // i dont' think this ever gets triggered
+        // i think it's for actual error catches
+    }
+}
+
+
 void getInput()
 {
     string userCommand;
@@ -33,6 +47,6 @@ void getInput()
     } else {
         setGlobalWindowName( userCommand );
         cout << "Chosen window: " << windowName;
-        // try: except:
+        selectWindow();
     }
 }

@@ -11,6 +11,8 @@ void setGlobalWindowName( string name )
 }
 
 
+//https://stackoverflow.com/questions/10246444/how-can-i-get-enumwindows-to-list-all-windows
+// Stevoisiak
 BOOL CALLBACK enumWindowCallback( HWND hWnd, LPARAM lparam ) 
 {
     int length = GetWindowTextLength(hWnd);
@@ -27,8 +29,13 @@ BOOL CALLBACK enumWindowCallback( HWND hWnd, LPARAM lparam )
 }
 
 
+// this isn't working cus the wanted user window gets converted to lower case
+// so i need to convert the windowTitle to lower case then check
+// but i need to make a temp variable windowTitleLowercase cus i need to keep the og
+// windowTitle to setFlobalWindowName
 BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam ) 
 {
+    cout << "Specific window" << windowName << endl;
     int length = GetWindowTextLength(hWnd);
     char* buffer = new char[length + 1];
     GetWindowText(hWnd, buffer, length + 1);
@@ -38,7 +45,6 @@ BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam )
     if ( IsWindowVisible(hWnd) && length != 0 ) 
     {
         std::cout << hWnd << ":  " << windowTitle << std::endl;
-        // if( windowTitle == "Steam" )
         if( windowTitle.find( windowName ) != string::npos )
         {
             std::cout << windowName << " found!" << std::endl;
@@ -46,5 +52,8 @@ BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam )
             return FALSE;
         }
     }
+    // Here means the window was not found cus if it's found return FALSE
+    cout << "Window not found!" << endl;
+
     return TRUE;
 }
