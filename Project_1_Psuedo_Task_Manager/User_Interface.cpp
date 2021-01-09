@@ -38,15 +38,16 @@ void getInput()
 
     // to_string( userCommand );
 
-    cout << "command: " << userCommand << endl;
+    cout << "Entered command: " << userCommand << endl;
 
     if( userCommand.find("list") != string::npos )
     {
         cout << "List all windows" << endl;
         EnumWindows(enumWindowCallback, NULL);
     } else {
-        setGlobalWindowName( userCommand );
-        cout << "Chosen window: " << windowName;
+        setGlobalWindowName( userCommand, "" );
+        cout << "User window: " << userWindowName << endl;
+        cout << "Found window: " << foundWindowName << endl;
         selectWindow();
     }
 }

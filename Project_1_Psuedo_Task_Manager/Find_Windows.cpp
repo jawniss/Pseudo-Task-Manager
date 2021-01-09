@@ -1,12 +1,24 @@
 #include "Find_Windows.h"
 #include "globals.h"
+#include <algorithm>
+#include <cctype>
 
 using namespace std;
 
-void setGlobalWindowName( string name )
+void setGlobalWindowName( string nameUser, string nameFound )
 {
     // cout << "windowname " << name << endl;
-    windowName = name;
+    cout << "nameUser empty: " << nameUser.empty() << endl;
+    cout << "nameFound empty: " << nameFound.empty() << endl;
+    if( !nameUser.empty() )
+    {
+        userWindowName = nameUser;
+    }
+    if( !nameFound.empty() )
+    {
+        foundWindowName = nameFound;
+    }
+    cout << "userWindowName: " << userWindowName << ". foundWindowName: " << foundWindowName << endl;
     return;
 }
 
@@ -35,7 +47,7 @@ BOOL CALLBACK enumWindowCallback( HWND hWnd, LPARAM lparam )
 // windowTitle to setFlobalWindowName
 BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam ) 
 {
-    cout << "Specific window" << windowName << endl;
+    // cout << "Specific window" << userWindowName << endl;
     int length = GetWindowTextLength(hWnd);
     char* buffer = new char[length + 1];
     GetWindowText(hWnd, buffer, length + 1);
@@ -45,15 +57,20 @@ BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam )
     if ( IsWindowVisible(hWnd) && length != 0 ) 
     {
         std::cout << hWnd << ":  " << windowTitle << std::endl;
-        if( windowTitle.find( windowName ) != string::npos )
+        string tempWindowTitleLowercase = windowTitle;
+        transform(tempWindowTitleLowercase.begin(), tempWindowTitleLowercase.end(), tempWindowTitleLowercase.begin(),
+            [](unsigned char c){ return tolower(c); });
+
+        if( tempWindowTitleLowercase.find( userWindowName ) != string::npos )
         {
-            std::cout << windowName << " found!" << std::endl;
-            setGlobalWindowName( windowTitle );
+            std::cout << userWindowName << " found!" << std::endl;
+            setGlobalWindowName( "", windowTitle );
             return FALSE;
         }
+    } else {
+        // Here means the window was not found cus if it's found return FALSE
+        cout << "Window not found!" << endl;
     }
-    // Here means the window was not found cus if it's found return FALSE
-    cout << "Window not found!" << endl;
 
     return TRUE;
 }
