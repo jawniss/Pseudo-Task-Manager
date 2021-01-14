@@ -56,7 +56,7 @@ BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam )
     // List visible windows with a non-empty title
     if ( IsWindowVisible(hWnd) && length != 0 ) 
     {
-        std::cout << hWnd << ":  " << windowTitle << std::endl;
+        // std::cout << hWnd << ":  " << windowTitle << std::endl;
         string tempWindowTitleLowercase = windowTitle;
         transform(tempWindowTitleLowercase.begin(), tempWindowTitleLowercase.end(), tempWindowTitleLowercase.begin(),
             [](unsigned char c){ return tolower(c); });
@@ -67,10 +67,11 @@ BOOL CALLBACK findSpecificWindow( HWND hWnd, LPARAM lparam )
             setGlobalWindowName( "", windowTitle );
             return FALSE;
         }
-    } else {
-        // Here means the window was not found cus if it's found return FALSE
-        cout << "Window not found!" << endl;
-    }
-
+    } 
+    // not working to show "Window not found" at the end if passes through all
+    // else {
+    //     // Here means the window was not found cus if it's found return FALSE
+    //     cout << "Window not found!" << endl;
+    // }
     return TRUE;
 }
